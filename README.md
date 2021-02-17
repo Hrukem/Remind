@@ -1,5 +1,10 @@
 # Remind
 
+A template for creating a site that sends reminders at a specified time and date. 
+Implemented the creation of users and reminders. 
+To send SMS or email, you need to implement this module (see lib/remind/send_remind/sending_remind.ex)
+Now reminders are displayed in the console.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
