@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <%= form_for @changeset, @action, fn f -> %>
+      <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+          <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+      <% end %>
+
+      <% date_now = NaiveDateTime.local_now() %>
+      <% year_now = date_now.year %>
+      
+      <%= label f, :date %>
+      <%= datetime_select f, :date, year: [options: year_now..year_now + 5] %>
+      <%= error_tag f, :date %>
+
+      <%= label f, :describe %>
+      <%= text_input f, :describe %>
+      <%= error_tag f, :describe %>
+
+      <%= hidden_input(f, :date_local_now, [id: :date_local]) %>
+
+      <div>
+        <%= submit "Save" %>
+      </div>
+    <% end %>
+
+  <script>
+    function TakeDateOS() {
+      let date_now = new Date();
+
+      let arr = [];
+      arr[0] = date_now.getFullYear();
+      arr[1] = date_now.getMonth() + 1; // JS starts counting the months from zero
+      arr[2] = date_now.getDate();
+      arr[3] = date_now.getHours();
+      arr[4] = date_now.getMinutes();
+      arr[5] = date_now.getSeconds();
+      
+      document.getElementById("date_local").value = arr;
+
+      timer = setTimeout(TakeDateOS, 100);
+    }
+    TakeDateOS();
+  </script>
+
+  </body>
+</html>

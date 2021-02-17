@@ -1,0 +1,18 @@
+<h1>Show Reminder</h1>
+
+<ul>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @reminder.date %>
+  </li>
+
+  <li>
+    <strong>Describe:</strong>
+    <%= @reminder.describe %>
+  </li>
+
+</ul>
+
+<!-- <span><%= link "Edit", to: Routes.reminder_path(@conn, :edit, @reminder) %></span> -->
+<span><%= link "Back", to: Routes.reminder_path(@conn, :index) %></span>
